@@ -1,0 +1,52 @@
+{
+  "skill": "escape-thoughtland",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们访谈了 30 个用户，大家都说这个功能很有用，所以准备开发。",
+      "expected_behavior": "应激活 escape-thoughtland，识别访谈意见不是 YODA，并转向行为证据。",
+      "notes": "正面场景: 用户口头反馈。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "竞品在国外成功了，所以这个模式在我们市场也应该成立。",
+      "expected_behavior": "应激活 escape-thoughtland，指出 OPD 不能替代自己的数据。",
+      "notes": "正面场景: 他人数据捷径。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "视频点赞很多，评论也都说想要，能证明需求吗？",
+      "expected_behavior": "应激活 escape-thoughtland，区分注意力和带切身利益行为。",
+      "notes": "正面场景: 弱信号误判。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们拿到了 120 个付费预售订单，请帮我分析证据强弱。",
+      "expected_behavior": "不应激活本 skill，应转 skin-in-game-caliper 或 tri-meter。",
+      "notes": "诱饵: 已有行为数据。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我总结这 10 条用户访谈的主题。",
+      "expected_behavior": "不应激活本 skill，因为用户只是要整理访谈，不是判断需求成立。",
+      "notes": "诱饵: 访谈整理任务。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们有 500 个 waitlist 邮箱，但没有付款，这算空想之地吗？",
+      "expected_behavior": "应部分激活并转 skin-in-game-caliper；邮箱是弱切身利益，不是纯意见，但也不是强购买证据。",
+      "notes": "边界: 弱行为数据。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

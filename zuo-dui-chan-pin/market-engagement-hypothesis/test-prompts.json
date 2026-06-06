@@ -1,0 +1,52 @@
+{
+  "skill": "market-engagement-hypothesis",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们想做一个给家长用的 AI 家教，但还没想清楚用户会怎么开始用。",
+      "expected_behavior": "应激活 market-engagement-hypothesis，写出市场如何了解、尝试、购买和使用。",
+      "notes": "正面场景: 只有创意和目标用户。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这个知识管理工具的价值主张有了，但我说不清市场会怎么参与。",
+      "expected_behavior": "应激活 market-engagement-hypothesis，构造 MEH。",
+      "notes": "正面场景: 价值主张未转行为前提。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队对谁会付费、谁会使用、谁会推荐理解不一致。",
+      "expected_behavior": "应激活 market-engagement-hypothesis，拆分市场参与链条。",
+      "notes": "正面场景: 参与主体和行为不清。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "至少 8% 的上海初中生家长会支付 99 元购买一次 AI 数学诊断课，怎么测？",
+      "expected_behavior": "不应激活本 skill，应进入 hypozoom-to-xyz 或 pretotype-yoda。",
+      "notes": "诱饵: 已有清晰 XYZ。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一个产品首页标题。",
+      "expected_behavior": "不应激活本 skill，因为是文案任务，不是市场参与假说。",
+      "notes": "诱饵: 文案生成。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们知道用户会预约 demo，但不知道后续会不会持续用。",
+      "expected_behavior": "可激活本 skill 补全参与链条，重点补尝试后的使用、留存和复购假设。",
+      "notes": "边界: 已有部分参与行为。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

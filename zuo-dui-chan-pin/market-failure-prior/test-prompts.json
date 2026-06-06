@@ -1,0 +1,52 @@
+{
+  "skill": "market-failure-prior",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们团队很强，融资也快到位了，这个 AI 硬件应该直接开干吧？",
+      "expected_behavior": "应激活 market-failure-prior，先重设新产品默认高失败率，再要求市场行为证据。",
+      "notes": "正面场景: 用团队和融资替代市场证据。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这个功能老板和销售都觉得会火，我想先排进路线图。",
+      "expected_behavior": "应激活 market-failure-prior，指出内部信心不能抵消市场失败先验。",
+      "notes": "正面场景: 内部意见驱动新功能。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们有品牌、有渠道、有技术，只要发布出去应该就能成功。",
+      "expected_behavior": "应激活 market-failure-prior，拆分执行能力与市场前提。",
+      "notes": "正面场景: 强执行力幻觉。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下 iPhone 17 的最新规格。",
+      "expected_behavior": "不应激活本 skill，因为这是产品信息查询。",
+      "notes": "诱饵: 纯信息查询。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们现有付费产品留存稳定，想优化设置页文案。",
+      "expected_behavior": "不应激活本 skill，因为这是成熟产品局部优化。",
+      "notes": "诱饵: 已有稳定市场数据。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们已经有 200 个预售订单，但团队还是很乐观，要不要继续提醒失败率？",
+      "expected_behavior": "可轻量调用或转 tri-meter；不应只停留在先验，应进一步检查 YODA 强度和多轮证据。",
+      "notes": "边界: 已有行为数据，先验不是唯一工具。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

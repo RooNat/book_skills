@@ -1,0 +1,52 @@
+{
+  "skill": "minimize-data-distance-hours-dollars",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们有全国广告、行业大会展台、微信群预售三个测试方案，先做哪个？",
+      "expected_behavior": "应激活 minimize-data-distance-hours-dollars，用 DTD/HTD/$TD 排序。",
+      "notes": "正面场景: 多方案排序。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这个验证计划要花 5 万元，有没有更便宜但不牺牲数据质量的方法？",
+      "expected_behavior": "应激活本 skill，寻找更低 $TD 的有效 YODA 路径。",
+      "notes": "正面场景: 成本过高。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我不想等两个月才知道有没有需求，能不能本周就拿到数据？",
+      "expected_behavior": "应激活本 skill，优化 HTD 并缩短数据路径。",
+      "notes": "正面场景: 测试太慢。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "很多用户会喜欢这个想法，帮我写成至少 X% 的 Y 会 Z。",
+      "expected_behavior": "不应激活本 skill，应先调用 xyz-hypothesis。",
+      "notes": "诱饵: 假说未明确。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我核算一下广告投放 ROI。",
+      "expected_behavior": "不应激活本 skill，因为这是财务/投放分析，不是验证路径排序。",
+      "notes": "诱饵: 普通成本分析。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "最便宜的方法是问家人朋友，但他们不是目标用户，可以吗？",
+      "expected_behavior": "应激活并拒绝仅追求低成本；必须保留代表性和 YODA 质量。",
+      "notes": "边界: 低成本损害数据质量。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

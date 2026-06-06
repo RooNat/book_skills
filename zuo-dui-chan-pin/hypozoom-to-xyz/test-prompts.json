@@ -1,0 +1,52 @@
+{
+  "skill": "hypozoom-to-xyz",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "至少 5% 的中国中小企业会买我们的财务 AI，但这个范围太大，怎么缩小测试？",
+      "expected_behavior": "应激活 hypozoom-to-xyz，把大 XYZ 缩进为代表性局部 xyz。",
+      "notes": "正面场景: 市场太大。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们没有预算验证全国需求，能不能先在一个社群里测？",
+      "expected_behavior": "应激活 hypozoom-to-xyz，检查社群代表性并生成小写 xyz。",
+      "notes": "正面场景: 缩进测试市场。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这个假说要等产品做完才能测，有没有办法缩成一周内可测？",
+      "expected_behavior": "应激活 hypozoom-to-xyz，缩进 Z 和时间窗口。",
+      "notes": "正面场景: 时间缩进。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "很多用户会喜欢我们的产品，帮我先写出 X/Y/Z。",
+      "expected_behavior": "不应激活本 skill，应先调用 xyz-hypothesis。",
+      "notes": "诱饵: 尚无 XYZ。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们已经做完三轮预售，请判断是否继续。",
+      "expected_behavior": "不应激活本 skill，应转 tri-meter。",
+      "notes": "诱饵: 试验后分析。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想用两个朋友测试这个企业采购产品，可以吗？",
+      "expected_behavior": "应激活并拒绝过度缩进；指出样本无代表性，需要寻找真实采购相关样本。",
+      "notes": "边界: 便利样本。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

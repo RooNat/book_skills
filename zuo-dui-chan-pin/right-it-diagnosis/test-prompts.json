@@ -1,0 +1,52 @@
+{
+  "skill": "right-it-diagnosis",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "产品上线后没人买，我们到底是营销没做好，还是产品本身没人要？",
+      "expected_behavior": "应激活 right-it-diagnosis，区分启动、运营和前提失败。",
+      "notes": "正面场景: 失败归因。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "用户试用后都不用了，我们要继续加功能还是重想方向？",
+      "expected_behavior": "应激活 right-it-diagnosis，判断是否为错误的它。",
+      "notes": "正面场景: 执行优化 vs 重验前提。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这次失败复盘大家都在怪销售，我想知道是不是市场前提错了。",
+      "expected_behavior": "应激活 right-it-diagnosis，防止互相指责掩盖前提失败。",
+      "notes": "正面场景: 复盘前提风险。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我修一下登录接口的 500 错误。",
+      "expected_behavior": "不应激活本 skill，因为这是明确技术故障排查。",
+      "notes": "诱饵: 工程 bug。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "给这个已经 PMF 的 SaaS 设计一个年度会员定价页。",
+      "expected_behavior": "不应激活本 skill，因为问题不是判断创意是否错误。",
+      "notes": "诱饵: 成熟产品执行任务。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们还没上线，只是访谈反馈一般，能判断是错误的它吗？",
+      "expected_behavior": "不应直接诊断为错误的它；应转 escape-thoughtland 或 pretotype-yoda 收集行为数据。",
+      "notes": "边界: 没有真实市场接触。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

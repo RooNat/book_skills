@@ -1,0 +1,52 @@
+{
+  "skill": "pretotype-yoda",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "产品还没做出来，但我想知道用户会不会为 AI 会议秘书付费，怎么测？",
+      "expected_behavior": "应激活 pretotype-yoda，设计快速、便宜、带切身利益的预型试验。",
+      "notes": "正面场景: 未建产品先测需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "MVP 要两个月，我能不能先用人工后台验证用户是否会用？",
+      "expected_behavior": "应激活 pretotype-yoda，设计人工/假面类预型收集 YODA。",
+      "notes": "正面场景: MVP 成本高。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们有一个 xyz 假说，下一步怎么拿到真实市场数据？",
+      "expected_behavior": "应激活 pretotype-yoda，把 xyz 绑定到预型和记录表。",
+      "notes": "正面场景: 从假说到试验。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我证明这个语音识别模型的准确率能到 95%。",
+      "expected_behavior": "不应激活本 skill，因为这是技术可行性验证。",
+      "notes": "诱饵: 原型/技术验证。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们已经收集了 300 个付款订单，帮我分析结果。",
+      "expected_behavior": "不应激活本 skill，应转 skin-in-game-caliper 或 tri-meter。",
+      "notes": "诱饵: 试验后分析。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想做一个医疗诊断假门页面，用户点了就说暂时不可用，可以吗？",
+      "expected_behavior": "应谨慎激活并强调合规、伦理和告知边界；高风险医疗场景不能简单做欺骗式假门。",
+      "notes": "边界: 高风险领域。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

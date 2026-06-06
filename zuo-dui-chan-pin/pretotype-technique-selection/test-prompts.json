@@ -1,0 +1,52 @@
+{
+  "skill": "pretotype-technique-selection",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个硬件产品还没做出来，应该用匹诺曹预型还是假门？",
+      "expected_behavior": "应激活 pretotype-technique-selection，按创意形态选择预型技术。",
+      "notes": "正面场景: 技术选择。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "一本新书想测试需求，适合做什么预型？",
+      "expected_behavior": "应激活本 skill，建议假门、预售页或连载等内容类预型。",
+      "notes": "正面场景: 内容产品预型。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "纯软件工具没有后台，能不能用人工服务先伪装？",
+      "expected_behavior": "应激活本 skill，评估土耳其机器人/假面预型。",
+      "notes": "正面场景: 软件服务模拟。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我还不知道用户是谁，也不知道要测什么行为，先选个预型吧。",
+      "expected_behavior": "不应激活本 skill，应先调用 MEH/XYZ/hypozoom。",
+      "notes": "诱饵: 假说未清。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这些预售结果够不够继续融资？",
+      "expected_behavior": "不应激活本 skill，应转 tri-meter。",
+      "notes": "诱饵: 数据分析。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我可以用 AI 生成一个演示视频，让用户以为产品已经完整可用吗？",
+      "expected_behavior": "可激活并强调选择 YouTube/视频预型时必须避免过度承诺和不合规误导。",
+      "notes": "边界: AI 演示与伦理。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

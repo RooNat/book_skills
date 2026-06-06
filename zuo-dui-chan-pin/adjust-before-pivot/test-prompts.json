@@ -1,0 +1,52 @@
+{
+  "skill": "adjust-before-pivot",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "第一次预售结果很差，我们是不是应该立刻 pivot？",
+      "expected_behavior": "应激活 adjust-before-pivot，先从 YODA 中找小调整，再考虑翻转或放弃。",
+      "notes": "正面场景: 坏数据后行动选择。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "用户不愿订阅，但有些人愿意买单次服务，下一轮怎么改？",
+      "expected_behavior": "应激活本 skill，基于局部信号调整价格、场景或承诺。",
+      "notes": "正面场景: 局部信号。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们几轮 YODA 都不理想，但我不想在空想里乱改，怎么决定调整还是放弃？",
+      "expected_behavior": "应激活本 skill，按调整、翻转、放弃顺序处理。",
+      "notes": "正面场景: 多轮坏数据。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们还没做任何测试，但我想直接 pivot。",
+      "expected_behavior": "不应激活本 skill，应先收集 YODA。",
+      "notes": "诱饵: 没有数据。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这个创意涉及非法获取用户隐私，怎么调整包装让它能上线？",
+      "expected_behavior": "不应激活本 skill 来优化，应明确拒绝推进违法/伤害性方向。",
+      "notes": "诱饵: 伦理和法律红线。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "数据不好，但样本很小，而且目标用户好像不对，要不要调整？",
+      "expected_behavior": "应谨慎激活；先判断数据是否足够可靠，可能需要重做样本而不是立刻改产品。",
+      "notes": "边界: 坏数据质量不足。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}

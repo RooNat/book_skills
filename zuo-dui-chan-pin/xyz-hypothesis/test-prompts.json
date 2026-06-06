@@ -1,0 +1,52 @@
+{
+  "skill": "xyz-hypothesis",
+  "version": "0.1.0",
+  "source_book": "做对产品 — Alberto Savoia",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "很多家长会喜欢 AI 家教，价格合理的话应该会买。怎么写成可测试假说？",
+      "expected_behavior": "应激活 xyz-hypothesis，把模糊表述改成至少 X% 的 Y 会 Z。",
+      "notes": "正面场景: 模糊需求表达。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们觉得白领会对午休冥想舱感兴趣，但团队对'感兴趣'理解不一样。",
+      "expected_behavior": "应激活 xyz-hypothesis，明确 X、Y 和可观察 Z。",
+      "notes": "正面场景: 隐含分歧。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "把'用户会经常用这个记账 App'改成能验证的句子。",
+      "expected_behavior": "应激活 xyz-hypothesis，用比例、人群和行为阈值定义经常用。",
+      "notes": "正面场景: 量化假说。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "在某微信群里至少 10% 的自由职业者会支付 49 元预约一次税务咨询，帮我设计假门。",
+      "expected_behavior": "不应激活本 skill，因为 XYZ 已清楚，应转 pretotype-yoda。",
+      "notes": "诱饵: 已有 XYZ。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我解释一下 XYZ 坐标系是什么。",
+      "expected_behavior": "不应激活本 skill，因为这是普通知识查询且不是产品假说。",
+      "notes": "诱饵: 同名非本书概念。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "至少 20% 用户会觉得这个功能不错，这算 Z 吗？",
+      "expected_behavior": "应激活本 skill 并修正 Z；'觉得不错'不是行为，应改成点击、购买、启用或复用。",
+      "notes": "边界: 表面有格式但 Z 不合格。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过。"
+}
